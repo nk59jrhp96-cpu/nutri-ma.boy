@@ -206,20 +206,21 @@ function dayKey(){return $('day').value||today()}
 function entries(){return (state.foods||[]).filter(x=>x.date===dayKey())}
 function sums(items){return items.reduce((a,x)=>{a.k+=+x.kcal||0;a.p+=+x.p||0;a.c+=+x.c||0;a.f+=+x.f||0;return a},{k:0,p:0,c:0,f:0})}
 
+
 function goals(){
   const profile=state.profile;
 
-  if(profile&&profile.age>=18&&profile.heightCm>0&&profile.weightKg>0){
+  if(profile && profile.age>=18 && profile.heightCm>0 && profile.weightKg>0){
     const base=10*profile.weightKg
       +6.25*profile.heightCm
       -5*profile.age
       +(profile.sex==='male'?5:profile.sex==='female'?-161:-78);
 
     const tdee=base*profile.activity;
-    const kcal=Math.max(1200,Math.round(
+    const kcal=Math.round(
       profile.goalType==='lose'?tdee-300:
       profile.goalType==='gain'?tdee+200:tdee
-    ));
+    );
 
     const p=Math.round(profile.weightKg*1.6);
     const f=Math.round(kcal*0.25/9);
@@ -233,6 +234,7 @@ function goals(){
     state.goals||{}
   );
 }
+
 
 function currentUnit(){return state.profile?.unit||state.unit||'kg'}
 function kgFromInput(v){return currentUnit()==='lb'?Number(v)/2.2046226218:Number(v)}
