@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#13231d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nutri Ma Boy">
+<link rel="manifest" href="manifest.json">
+<title>Nutri Ma Boy — Seguimiento nutricional</title>
+<style>
+:root{--bg:#0d1512;--panel:#16231d;--panel2:#1d2d25;--text:#f2f7f3;--muted:#a8b8ad;--green:#b9f36b;--line:#2d4035;--orange:#ffbf69;--red:#ff8c83}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1c3025 0,#0d1512 55%);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:12px 15px;font-weight:750;background:var(--green);color:#152015}button.secondary{background:#273a2f;color:var(--text);border:1px solid var(--line)}button.danger{background:#482925;color:#ffd9d5;border:1px solid #75433d}.wrap{max-width:1100px;margin:auto;padding:22px 16px 70px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:var(--green);color:#142016;font-size:25px;font-weight:900}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:var(--green);font-weight:800}.title{font-size:clamp(25px,4vw,37px);font-weight:900;letter-spacing:-.04em;margin:2px 0}.muted{color:var(--muted)}.date{background:var(--panel);border:1px solid var(--line);padding:10px 12px;border-radius:13px;color:var(--text);max-width:155px}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.card{background:linear-gradient(145deg,#192820,#142019);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 12px 35px #0002}.card h2{font-size:18px;margin:0 0 14px}.hero{display:grid;grid-template-columns:170px 1fr;align-items:center;gap:22px}.ring{width:164px;height:164px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) var(--progress,0%),#304237 0);position:relative}.ring:before{content:"";position:absolute;inset:11px;border-radius:50%;background:#17251d}.ringcontent{position:relative;text-align:center}.big{font-size:32px;font-weight:900;letter-spacing:-.04em}.small{font-size:12px;color:var(--muted)}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.metric{background:#203128;border:1px solid #304439;padding:12px;border-radius:16px}.metric b{display:block;font-size:20px}.metric span{font-size:12px;color:var(--muted)}.bar{height:7px;background:#34473a;border-radius:9px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;width:0;background:var(--green);border-radius:9px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.stack{display:grid;gap:16px}.fieldgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:grid;gap:5px}.field.full{grid-column:1/-1}label{font-size:12px;color:var(--muted);font-weight:750}input,select,textarea{width:100%;background:#0f1913;border:1px solid #35493c;color:var(--text);border-radius:12px;padding:11px 12px;min-width:0}input[type=file]{padding:9px;font-size:13px}input:focus,select:focus,textarea:focus{outline:2px solid #8cc94d;border-color:transparent}.foodform{display:grid;gap:12px}.foodlist{display:grid;gap:9px}.fooditem{display:flex;align-items:center;gap:12px;background:#1b2a21;border:1px solid var(--line);border-radius:15px;padding:12px}.foodemoji{width:43px;height:43px;border-radius:12px;background:#2a3c2f;display:grid;place-items:center;font-size:22px;flex-shrink:0}.foodinfo{flex:1;min-width:0}.foodinfo b{display:block;overflow-wrap:anywhere}.foodinfo small{color:var(--muted)}.kcal{font-weight:900;white-space:nowrap}.delete{background:transparent;color:#ffaaa2;padding:7px;border:1px solid #65413c;border-radius:10px}.empty{text-align:center;padding:25px;color:var(--muted);border:1px dashed #3b5142;border-radius:15px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 16px}.tab{background:#203128;color:var(--muted);border:1px solid var(--line);padding:9px 13px}.tab.active{background:var(--green);color:#152015}.section{display:none}.section.active{display:block}.notice{background:#332e1e;border:1px solid #61532e;color:#f5d99a;border-radius:14px;padding:12px;font-size:13px}.photo-preview{max-width:100%;max-height:190px;object-fit:contain;border-radius:12px;display:none}.historyrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.historyrow:last-child{border:0}.pill{display:inline-block;background:#26392d;border:1px solid var(--line);padding:4px 9px;border-radius:99px;font-size:12px;color:var(--muted)}.footer{text-align:center;color:#718579;font-size:12px;margin-top:25px}.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{grid-template-columns:130px 1fr;gap:14px}.ring{width:126px;height:126px}.big{font-size:26px}.card{padding:16px}.top{align-items:flex-start}.date{max-width:130px}.metricgrid{gap:6px}.metric{padding:10px}.metric b{font-size:17px}}
+@media(max-width:390px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}.hero .heroText{text-align:center}.actions{justify-content:center}.fieldgrid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">N</div><div><div class="eyebrow">Tu cambio físico · versión 1.0</div><div class="title">Nutri Ma Boy</div><div class="muted" style="font-size:13px">Comé mejor. Entrená. Repetí. 💪</div></div></div>
+  <input id="day" class="date" type="date" aria-label="Fecha del registro">
+</header>
+<nav class="tabs">
+  <button class="tab active" data-tab="today">Hoy</button>
+  <button class="tab" data-tab="add">Añadir comida</button>
+  <button class="tab" data-tab="progress">Progreso</button>
+  <button class="tab" data-tab="settings">Mis metas</button>
+</nav>
+<section id="today" class="section active">
+  <div class="grid">
+    <div class="stack">
+      <div class="card">
+        <h2>Tu resumen de hoy</h2>
+        <div class="hero">
+          <div class="ring" id="ring"><div class="ringcontent"><div class="big" id="remaining">2000</div><div class="small">kcal restantes</div></div></div>
+          <div class="heroText"><div class="eyebrow">Consumido</div><div><span class="big" id="consumed">0</span> <span class="muted">/ <span id="target">2000</span> kcal</span></div><div class="bar"><i id="calbar"></i></div><p class="muted" id="summaryText">Cada registro suma. No hace falta hacerlo perfecto.</p><span class="pill" id="entryCount">0 comidas registradas</span></div>
+        </div>
+        <div class="metricgrid">
+          <div class="metric"><b id="protein">0 g</b><span>Proteína</span><div class="bar"><i id="proteinbar"></i></div></div>
+          <div class="metric"><b id="carbs">0 g</b><span>Carbohidratos</span><div class="bar"><i id="carbsbar"></i></div></div>
+          <div class="metric"><b id="fat">0 g</b><span>Grasas</span><div class="bar"><i id="fatbar"></i></div></div>
+        </div>
+        <div class="actions"><button onclick="showTab('add')">＋ Registrar alimento</button><button class="secondary" onclick="showTab('progress')">Ver progreso</button></div>
+      </div>
+      <div class="card"><h2>Registro de alimentos</h2><div id="foodlist" class="foodlist"></div></div>
+    </div>
+    <div class="stack">
+      <div class="card"><h2>Acceso rápido</h2><p class="muted" style="margin-top:-5px">Buscá un alimento habitual y ajustá la porción.</p><div class="field"><label for="quickSearch">Buscar en alimentos de ejemplo</label><input id="quickSearch" placeholder="Ej. huevo, arroz, gaseosa…"></div><div id="quickResults" class="foodlist" style="margin-top:12px"></div></div>
+      <div class="card"><h2>La misión de hoy</h2><p>🥗 Registrá lo que comés, incluso snacks y bebidas.</p><p>🏋️ Priorizá proteína y entrenamiento de fuerza.</p><p>😴 Dormí bien y mirá tendencias semanales, no cambios de un solo día.</p><div class="notice">Las calorías son estimaciones. En comidas caseras, el aceite, las salsas y el tamaño de la porción pueden cambiar bastante el resultado.</div></div>
+    </div>
+  </div>
+</section>
+<section id="add" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>＋ Registrar comida</h2>
+      <form id="foodForm" class="foodform">
+        <div class="fieldgrid">
+          <div class="field full"><label for="foodName">Nombre del alimento o comida</label><input id="foodName" required placeholder="Ej. 2 huevos revueltos"></div>
+          <div class="field"><label for="amount">Porción</label><input id="amount" type="number" min="0.1" step="0.1" value="1" required></div>
+          <div class="field"><label for="unit">Unidad / porción</label><select id="unit"><option>porción</option><option>unidad</option><option>g</option><option>ml</option><option>taza</option><option>vaso</option><option>plato</option><option>rebanada</option></select></div>
+          <div class="field"><label for="kcal">Calorías (kcal)</label><input id="kcal" type="number" min="0" step="1" required placeholder="Ej. 180"></div>
+          <div class="field"><label for="p">Proteína (g)</label><input id="p" type="number" min="0" step="0.1" value="0"></div>
+          <div class="field"><label for="c">Carbohidratos (g)</label><input id="c" type="number" min="0" step="0.1" value="0"></div>
+          <div class="field"><label for="f">Grasas (g)</label><input id="f" type="number" min="0" step="0.1" value="0"></div>
+          <div class="field full"><label for="meal">Momento</label><select id="meal"><option>Desayuno</option><option>Almuerzo</option><option>Cena</option><option>Merienda</option><option>Bebida</option></select></div>
+        </div>
+        <button type="submit">Guardar en mi registro</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2>📸 Añadir con foto</h2>
+      <p class="muted">Sacá una foto o elegí una imagen. La versión inicial guarda la foto como referencia; no inventa calorías automáticamente. Revisá la porción y completá los datos estimados antes de guardar.</p>
+      <div class="field"><label for="photo">Tomar foto / elegir imagen</label><input id="photo" type="file" accept="image/*" capture="environment"></div>
+      <img id="preview" class="photo-preview" alt="Vista previa de la comida">
+      <div class="notice" style="margin-top:14px">Tip: si conocés el peso o los ingredientes, el cálculo será mucho más útil. Podés usar el nombre de la comida y buscar sus valores en una etiqueta o fuente nutricional.</div>
+      <div class="actions"><button class="secondary" id="usePhoto" type="button">Usar foto como referencia</button></div>
+      <div id="photoStatus" class="muted" style="font-size:13px;margin-top:8px"></div>
+    </div>
+  </div>
+</section>
+<section id="progress" class="section">
+  <div class="grid">
+    <div class="card"><h2>Tu historial de peso</h2><p class="muted">Registrá tu peso en condiciones parecidas. La tendencia importa más que una medición aislada.</p>
+      <form id="weightForm" class="fieldgrid">
+        <div class="field"><label for="weightDate">Fecha</label><input id="weightDate" type="date" required></div>
+        <div class="field"><label for="weight">Peso (kg)</label><input id="weight" type="number" min="20" max="400" step="0.1" required placeholder="Ej. 75.2"></div>
+        <div class="field full"><button type="submit">Guardar peso</button></div>
+      </form>
+      <div style="height:1px;background:var(--line);margin:18px 0"></div>
+      <h2>🎯 Mi peso deseado</h2>
+      <p class="muted">Elegí un objetivo y una fecha. La app estimará si el ritmo parece razonable, sin prometer resultados exactos.</p>
+      <form id="goalWeightForm" class="fieldgrid">
+        <div class="field"><label for="currentWeight">Peso actual (kg)</label><input id="currentWeight" type="number" min="20" max="400" step="0.1" required placeholder="Ej. 78"></div>
+        <div class="field"><label for="desiredWeight">Peso deseado (kg)</label><input id="desiredWeight" type="number" min="20" max="400" step="0.1" required placeholder="Ej. 72"></div>
+        <div class="field"><label for="goalDate">¿Para cuándo?</label><input id="goalDate" type="date" required></div>
+        <div class="field full"><button type="submit">Evaluar mi objetivo</button></div>
+      </form>
+      <div id="goalAssessment" class="notice hidden" style="margin-top:12px"></div>
+      <div id="weightHistory" style="margin-top:16px"></div>
+    </div>
+    <div class="card"><h2>Últimos 7 días</h2><p class="muted">Promedio de calorías de los días que registraste comida.</p><div id="weekly"></div><div class="notice" style="margin-top:16px">No hace falta acertar el objetivo todos los días. Usá el registro para aprender tus hábitos y ajustar con calma.</div></div>
+  </div>
+</section>
+<section id="settings" class="section">
+  <div class="grid">
+    <div class="card"><h2>🎯 Mis metas</h2><p class="muted">Podés ajustar estos valores cuando tengas una meta individual más precisa.</p>
+      <form id="settingsForm" class="foodform">
+        <div class="field"><label for="calGoal">Meta diaria de calorías (kcal)</label><input id="calGoal" type="number" min="800" max="6000" required></div>
+        <div class="fieldgrid">
+          <div class="field"><label for="proteinGoal">Proteína (g)</label><input id="proteinGoal" type="number" min="0" max="400" required></div>
+          <div class="field"><label for="carbsGoal">Carbohidratos (g)</label><input id="carbsGoal" type="number" min="0" max="800" required></div>
+          <div class="field"><label for="fatGoal">Grasas (g)</label><input id="fatGoal" type="number" min="0" max="300" required></div>
+        </div>
+        <button type="submit">Guardar mis metas</button>
+      </form>
+      <div class="notice" style="margin-top:14px">Las metas iniciales son solo valores de ejemplo, no una prescripción. Para estimar una meta útil hacen falta edad, estatura, peso, actividad y contexto personal.</div>
+    </div>
+    <div class="card"><h2>🛡️ Tus datos</h2><p>Los registros se guardan localmente en este navegador usando almacenamiento del dispositivo. No se envían a un servidor en esta versión.</p><div class="actions"><button class="secondary" id="exportBtn">Exportar mis datos (JSON)</button><button class="danger" id="clearBtn">Borrar todos mis datos</button></div><p class="muted" style="font-size:13px">Si borrás los datos del navegador o cambiás de dispositivo, podrías perder los registros. Exportá una copia de vez en cuando.</p></div>
+  </div>
+</section>
+<div class="footer">Nutri Ma Boy · Hecho para tu proceso, no para la perfección.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toLocaleDateString('en-CA');
+const foodDB=[
+ {name:'Huevo grande',k:72,p:6.3,c:.4,f:4.8,unit:'unidad',emoji:'🥚'},
+ {name:'Arroz cocido',k:205,p:4.3,c:45,f:.4,unit:'taza',emoji:'🍚'},
+ {name:'Frijoles cocidos',k:220,p:14,c:40,f:.9,unit:'taza',emoji:'🫘'},
+ {name:'Pechuga de pollo cocida',k:165,p:31,c:0,f:3.6,unit:'100 g',emoji:'🍗'},
+ {name:'Tortilla de maíz',k:60,p:1.5,c:12,f:.8,unit:'unidad',emoji:'🫓'},
+ {name:'Banano mediano',k:105,p:1.3,c:27,f:.4,unit:'unidad',emoji:'🍌'},
+ {name:'Leche entera',k:149,p:7.7,c:11.7,f:8,unit:'taza',emoji:'🥛'},
+ {name:'Pan integral',k:80,p:4,c:14,f:1.2,unit:'rebanada',emoji:'🍞'},
+ {name:'Queso fresco',k:80,p:5,c:1,f:6,unit:'30 g',emoji:'🧀'},
+ {name:'Gaseosa regular',k:140,p:0,c:39,f:0,unit:'lata 355 ml',emoji:'🥤'},
+ {name:'Papas fritas',k:312,p:3.4,c:41,f:15,unit:'100 g',emoji:'🍟'},
+ {name:'Pizza de queso',k:285,p:12,c:36,f:10,unit:'rebanada',emoji:'🍕'},
+ {name:'Avena cocida',k:154,p:6,c:27,f:3,unit:'taza',emoji:'🥣'},
+ {name:'Yogur natural',k:120,p:6,c:9,f:6,unit:'vaso',emoji:'🥣'},
+ {name:'Maní',k:567,p:26,c:16,f:49,unit:'100 g',emoji:'🥜'},
+ {name:'Aceite',k:119,p:0,c:0,f:13.5,unit:'cucharada',emoji:'🫒'}
+];
+let state=load();
+function load(){try{return JSON.parse(localStorage.getItem('nutriMaBoy')||'{}')}catch(e){return {}}}
+function save(){localStorage.setItem('nutriMaBoy',JSON.stringify(state))}
+function dayKey(){return $('day').value||today()}
+function entries(){return (state.foods||[]).filter(x=>x.date===dayKey())}
+function sums(items){return items.reduce((a,x)=>{a.k+=+x.kcal||0;a.p+=+x.p||0;a.c+=+x.c||0;a.f+=+x.f||0;return a},{k:0,p:0,c:0,f:0})}
+function goals(){return Object.assign({kcal:2000,p:130,c:220,f:65},state.goals||{})}
+function fmt(n){return Math.round(n).toLocaleString('es-NI')}
+function bar(id,v,g){$(id).style.width=Math.min(100,g?100*v/g:0)+'%'}
+function render(){
+ const es=entries(),s=sums(es),g=goals(),pct=Math.min(100,s.k/g.kcal*100);
+ $('consumed').textContent=fmt(s.k);$('target').textContent=fmt(g.kcal);$('remaining').textContent=fmt(Math.max(0,g.kcal-s.k));
+ $('ring').style.setProperty('--progress',pct+'%');bar('calbar',s.k,g.kcal);
+ $('protein').textContent=fmt(s.p)+' g';$('carbs').textContent=fmt(s.c)+' g';$('fat').textContent=fmt(s.f)+' g';
+ bar('proteinbar',s.p,g.p);bar('carbsbar',s.c,g.c);bar('fatbar',s.f,g.f);
+ $('summaryText').textContent=s.k>g.kcal?'Superaste la meta hoy; un día no define tu progreso.':`Te quedan ${fmt(g.kcal-s.k)} kcal según tu meta actual.`;
+ $('entryCount').textContent=es.length+' registro'+(es.length===1?'':'s');
+ $('foodlist').innerHTML=es.length?es.slice().reverse().map(x=>`<div class="fooditem"><div class="foodemoji">${x.photo?'📸':(x.emoji||'🍽️')}</div><div class="foodinfo"><b>${esc(x.name)}</b><small>${esc(x.meal||'Comida')} · ${esc(String(x.amount||1))} ${esc(x.unit||'porción')} · P ${fmt(x.p)}g / C ${fmt(x.c)}g / G ${fmt(x.f)}g</small></div><div class="kcal">${fmt(x.kcal)} kcal</div><button class="delete" onclick="removeFood('${x.id}')" aria-label="Eliminar ${esc(x.name)}">×</button></div>`).join(''):'<div class="empty">Todavía no hay alimentos registrados para este día.<br>¡Agregá el primero!</div>';
+ renderQuick();renderWeights();renderWeekly();fillGoals();
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function removeFood(id){state.foods=(state.foods||[]).filter(x=>x.id!==id);save();render()}
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function addFood(obj){state.foods=state.foods||[];state.foods.push({...obj,id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),date:dayKey()});save();render();showTab('today')}
+$('day').value=today();$('weightDate').value=today();
+$('day').addEventListener('change',render);
+$('foodForm').addEventListener('submit',e=>{e.preventDefault();const amount=+$('amount').value;addFood({name:$('foodName').value.trim(),amount,unit:$('unit').value,kcal:+$('kcal').value,p:+$('p').value||0,c:+$('c').value||0,f:+$('f').value||0,meal:$('meal').value});e.target.reset();$('amount').value=1;$('p').value=$('c').value=$('f').value=0});
+function renderQuick(){let q=$('quickSearch').value.toLowerCase().trim();let list=foodDB.filter(x=>!q||x.name.toLowerCase().includes(q)).slice(0,7);$('quickResults').innerHTML=list.map((x,i)=>`<div class="fooditem"><div class="foodemoji">${x.emoji}</div><div class="foodinfo"><b>${x.name}</b><small>${x.unit} · ${x.k} kcal · P ${x.p}g</small></div><button class="secondary" onclick="quickAdd(${foodDB.indexOf(x)})">＋</button></div>`).join('')||'<div class="empty">No encontré ese alimento en la lista de ejemplo. Podés registrarlo manualmente.</div>'}
+$('quickSearch').addEventListener('input',renderQuick);
+function quickAdd(i){const x=foodDB[i];addFood({name:x.name,amount:1,unit:x.unit,kcal:x.k,p:x.p,c:x.c,f:x.f,meal:'Comida',emoji:x.emoji})}
+$('photo').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;const url=URL.createObjectURL(file);$('preview').src=url;$('preview').style.display='block';$('photoStatus').textContent='Foto lista. No se ha guardado todavía.'});
+$('usePhoto').addEventListener('click',()=>{const file=$('photo').files[0];if(!file){$('photoStatus').textContent='Primero elegí o tomá una foto.';return}$('foodName').value=$('foodName').value||'Comida (ver foto)';$('photoStatus').textContent='Referencia visual seleccionada. Completá calorías y macros en el formulario y guardá; la imagen no se adjunta al registro en esta versión.';showTab('add');$('foodName').focus()});
+function fillGoals(){let g=goals();$('calGoal').value=g.kcal;$('proteinGoal').value=g.p;$('carbsGoal').value=g.c;$('fatGoal').value=g.f}
+$('settingsForm').addEventListener('submit',e=>{e.preventDefault();state.goals={kcal:+$('calGoal').value,p:+$('proteinGoal').value,c:+$('carbsGoal').value,f:+$('fatGoal').value};save();render();alert('Metas guardadas.')});
+$('weightForm').addEventListener('submit',e=>{e.preventDefault();state.weights=state.weights||[];state.weights.push({date:$('weightDate').value,kg:+$('weight').value});state.weights.sort((a,b)=>a.date.localeCompare(b.date));save();$('weight').value='';renderWeights();renderWeekly()});
+function renderWeights(){let ws=(state.weights||[]).slice().sort((a,b)=>b.date.localeCompare(a.date));$('weightHistory').innerHTML=ws.length?ws.map(w=>`<div class="historyrow"><div><b>${esc(w.date)}</b><div class="muted" style="font-size:12px">Peso registrado</div></div><b>${Number(w.kg).toFixed(1)} kg</b></div>`).join(''):'<div class="empty">Todavía no hay pesos guardados.</div>'}
+function renderWeekly(){let days=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);let key=d.toLocaleDateString('en-CA');let s=sums((state.foods||[]).filter(x=>x.date===key));let count=(state.foods||[]).filter(x=>x.date===key).length;days.push({key,k:s.k,count})}let used=days.filter(d=>d.count);let avg=used.length?used.reduce((a,d)=>a+d.k,0)/used.length:0;$('weekly').innerHTML=`<div class="metric"><span>Promedio registrado</span><b>${used.length?fmt(avg)+' kcal':'—'}</b><span>${used.length} de 7 días con registros</span></div>`+days.map(d=>`<div class="historyrow"><div>${esc(d.key)} <span class="muted">${d.count?'· '+d.count+' registro(s)':'· sin datos'}</span></div><b>${d.count?fmt(d.k)+' kcal':'—'}</b></div>`).join('')}
+$('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nutri-ma-boy-backup.json';a.click();URL.revokeObjectURL(a.href)});
+$('clearBtn').addEventListener('click',()=>{if(confirm('¿Seguro que querés borrar todos tus alimentos, metas y pesos? Esta acción no se puede deshacer.')){state={};save();render()}});
+$('goalDate').value=(()=>{let d=new Date();d.setMonth(d.getMonth()+3);return d.toLocaleDateString('en-CA')})();
+$('goalWeightForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const current=+$('currentWeight').value, desired=+$('desiredWeight').value, targetDate=new Date($('goalDate').value+'T12:00:00'), now=new Date();
+ const weeks=(targetDate-now)/(1000*60*60*24*7), delta=desired-current, abs=Math.abs(delta);
+ const box=$('goalAssessment');box.classList.remove('hidden');
+ if(weeks<=0){box.textContent='Elegí una fecha futura para evaluar el objetivo.';return}
+ if(Math.abs(delta)<0.1){box.textContent='Tu peso deseado es prácticamente igual al actual. Podría ser un objetivo de mantenimiento o recomposición corporal; el peso por sí solo no mide cambios de músculo y grasa.';return}
+ const rate=abs/weeks;
+ // General screening range only, not a personalized medical judgement.
+ if(delta<0){
+   if(rate<=0.25){box.innerHTML=`<b>✅ Parece un objetivo gradual.</b><br>Para bajar ${abs.toFixed(1)} kg en ${Math.round(weeks)} semanas, el promedio sería ${rate.toFixed(2)} kg/semana. Es un ritmo conservador para muchas personas, aunque la viabilidad depende de tu contexto y composición corporal.`}
+   else if(rate<=0.75){box.innerHTML=`<b>🟡 Podría ser posible, pero es exigente.</b><br>El ritmo estimado sería ${rate.toFixed(2)} kg/semana. La idoneidad depende de tu peso actual, salud y punto de partida; conviene evitar recortes extremos y ajustar según la evolución.`}
+   else{box.innerHTML=`<b>⚠️ El objetivo parece demasiado agresivo para ese plazo.</b><br>Requeriría perder ${rate.toFixed(2)} kg/semana. Considerá ampliar la fecha o plantear una meta intermedia. No es una predicción médica ni una garantía.`}
+ }else{
+   if(rate<=0.25){box.innerHTML=`<b>🟢 Es una subida gradual.</b><br>Ganar ${abs.toFixed(1)} kg en ${Math.round(weeks)} semanas equivale a ${rate.toFixed(2)} kg/semana. Que sea apropiado depende de si buscás músculo, de tu experiencia entrenando y de tu situación actual.`}
+   else if(rate<=0.5){box.innerHTML=`<b>🟡 Es una meta relativamente rápida.</b><br>Requeriría subir ${rate.toFixed(2)} kg/semana. Parte de la subida podría no ser músculo; considerá una meta más gradual si priorizás ganar músculo limitando grasa.`}
+   else{box.innerHTML=`<b>⚠️ La meta parece demasiado rápida para ganar músculo de forma controlada.</b><br>Requeriría subir ${rate.toFixed(2)} kg/semana. Considerá ampliar el plazo y revisar el objetivo.`}
+ }
+});
+render();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>

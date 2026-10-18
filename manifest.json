@@ -1,0 +1,10 @@
+{
+  "name": "Nutri Ma Boy",
+  "short_name": "Nutri Ma Boy",
+  "description": "Seguimiento nutricional gratuito",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1512",
+  "theme_color": "#13231d",
+  "icons": []
+}
